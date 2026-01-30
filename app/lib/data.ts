@@ -9,7 +9,12 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+// const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+
+const sql = postgres(process.env.POSTGRES_URL!, { 
+  ssl: 'require',
+  prepare: false // Tambahkan ini untuk mematikan prepared statements
+});
 
 export async function fetchRevenue() {
   try {
